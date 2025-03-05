@@ -9,20 +9,19 @@ function createBoxes(amount) {
     return;
   }
   let size = 30;
+  let createdElements = [];
   for (let i = 1; i <= amount; i++) {
     let elem = document.createElement("div");
     elem.style.width = `${size}px`;
     elem.style.height = `${size}px`;
     elem.style.backgroundColor = getRandomHexColor();
-    inputBox.append(elem);
+    createdElements.push(elem);
     size += 10;
   }
+  inputBox.append(...createdElements);
 }
 function destroyBoxes() {
-  const allBoxes = document.querySelectorAll("#boxes div");
-  for (let i = 0; i < allBoxes.length; i++) {
-    allBoxes[i].remove();
-  }
+  inputBox.innerHTML = "";
 }
 const createElementsBtn = document.querySelector(
   "#controls button[data-create]"
